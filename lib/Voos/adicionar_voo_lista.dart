@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hipax_log/Voos/adicionar_voo_page.dart';
+import 'package:hipax_log/Voos/adicionar_voo_page_desktop.dart';
 import 'package:provider/provider.dart';
 import 'package:hipax_log/modelo_participantes.dart';
 import '../loader_core.dart';
@@ -31,6 +32,7 @@ class AdicionarVooLista extends StatefulWidget {
 class _AdicionarVooListaState extends State<AdicionarVooLista> {
   @override
   Widget build(BuildContext context) {
+    final desktopWidth = MediaQuery.sizeOf(context).width > 768;
     final transfer = Provider.of<List<TransferIn>>(context);
 
     if (transfer.isEmpty) {
@@ -114,14 +116,23 @@ class _AdicionarVooListaState extends State<AdicionarVooLista> {
         initialData: Participantes.empty(),
         value:
             DatabaseServiceParticipante(uid: widget.pax.uid).participantesDados,
-        child: AdicionarVooPage(
-          listLocais: listLocais,
-          tipoTrecho: widget.tipoTrecho,
-          listEnderecos: listEnderecos,
-          adicionarLocal: adicionarLocalLista,
-          adicionarEndereco: adicionarEnderecoLista,
-          classificacaoTransfer: widget.classificacaoTransfer,
-        ),
+        child: desktopWidth
+            ? AdicionarVooPageDesktop(
+                listLocais: listLocais,
+                tipoTrecho: widget.tipoTrecho,
+                listEnderecos: listEnderecos,
+                adicionarLocal: adicionarLocalLista,
+                adicionarEndereco: adicionarEnderecoLista,
+                classificacaoTransfer: widget.classificacaoTransfer,
+              )
+            : AdicionarVooPage(
+                listLocais: listLocais,
+                tipoTrecho: widget.tipoTrecho,
+                listEnderecos: listEnderecos,
+                adicionarLocal: adicionarLocalLista,
+                adicionarEndereco: adicionarEnderecoLista,
+                classificacaoTransfer: widget.classificacaoTransfer,
+              ),
       );
     }
   }

@@ -832,7 +832,7 @@ class MyBubbleTimeLineCentralAdministrativa extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      '${formatDate(participante.saida21.toDate(), [
+                                      '${formatDate(participante.saida21.toDate().toUtc(), [
                                             HH,
                                             ':',
                                             nn,
@@ -905,7 +905,7 @@ class MyBubbleTimeLineCentralAdministrativa extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      '   ${formatDate(participante.chegada21.toDate(), [
+                                      '   ${formatDate(participante.chegada21.toDate().toUtc(), [
                                             HH,
                                             ':',
                                             nn,

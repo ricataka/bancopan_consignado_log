@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hipax_log/Voos/editar_voo_page_desktop.dart';
 import 'package:provider/provider.dart';
 import 'package:hipax_log/modelo_participantes.dart';
 import '../loader_core.dart';
@@ -32,6 +33,7 @@ class EditarVooLista extends StatefulWidget {
 class _EditarVooListaState extends State<EditarVooLista> {
   @override
   Widget build(BuildContext context) {
+    final desktopWidth = MediaQuery.sizeOf(context).width > 768;
     final transfer = Provider.of<List<TransferIn>>(context);
 
     if (transfer.isEmpty) {
@@ -80,16 +82,16 @@ class _EditarVooListaState extends State<EditarVooLista> {
 
       listLocais.sort();
 
-      List<String?> listDestinoEnderecosDistinta =
-          transfer.map((e) => e.destinoConsultaMaps).toSet().toList();
+      List<String> listDestinoEnderecosDistinta =
+          transfer.map((e) => e.destinoConsultaMaps ?? '').toSet().toList();
 
-      List<String?> listOrigemoEnderecosDistinta =
-          transfer.map((e) => e.origemConsultaMap).toSet().toList();
+      List<String> listOrigemoEnderecosDistinta =
+          transfer.map((e) => e.origemConsultaMap ?? '').toSet().toList();
 
-      var listEnderecos = [
-        listDestinoEnderecosDistinta,
-        listOrigemoEnderecosDistinta
-      ].expand((f) => f).toSet().toList();
+      var listEnderecos = <String>[
+        ...listDestinoEnderecosDistinta,
+        ...listOrigemoEnderecosDistinta
+      ];
       listEnderecos.add('+ ADICIONAR NOVO ENDEREÇO');
 
       listEnderecos.sort();
@@ -215,15 +217,24 @@ class _EditarVooListaState extends State<EditarVooLista> {
             eticket41: ''),
         value: DatabaseServiceParticipante(uid: widget.pax?.uid ?? '')
             .participantesDados,
-        child: EditarVooPage(
-          listLocais: listLocais,
-          pax: widget.pax,
-          tipoTrecho: widget.tipoTrecho,
-          listEnderecos: listEnderecos,
-          adicionarLocal: adicionarLocalLista,
-          adicionarEndereco: adicionarEnderecoLista,
-          classificacaoTransfer: widget.classificacaoTransfer,
-        ),
+        child: desktopWidth
+            ? EditarVooPageDesktop(
+                listLocais: listLocais,
+                pax: widget.pax ?? Participantes.empty(),
+                tipoTrecho: widget.tipoTrecho ?? '',
+                listEnderecos: listEnderecos,
+                adicionarLocal: adicionarLocalLista,
+                adicionarEndereco: adicionarEnderecoLista,
+                classificacaoTransfer: widget.classificacaoTransfer ?? '')
+            : EditarVooPage(
+                listLocais: listLocais,
+                pax: widget.pax,
+                tipoTrecho: widget.tipoTrecho,
+                listEnderecos: listEnderecos,
+                adicionarLocal: adicionarLocalLista,
+                adicionarEndereco: adicionarEnderecoLista,
+                classificacaoTransfer: widget.classificacaoTransfer,
+              ),
       );
     }
   }
