@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "325350848225",
+    "project_id": "biomerieuxreuniaoclientes2023",
+    "storage_bucket": "biomerieuxreuniaoclientes2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325350848225:android:73f433aaac97f282ef29a0",
+        "android_client_info": {
+          "package_name": "com.example.applog_teste_migracao"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsYuvlMluI0eP7ePmdY8ccu_SfnDky7oI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
