@@ -173,7 +173,7 @@ class _GeralPageState extends State<GeralPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Lista Homenageados'.toUpperCase(),
+                          'Lista PCP'.toUpperCase(),
                           textAlign: TextAlign.left,
                           style: GoogleFonts.lato(
                             fontSize: 14,

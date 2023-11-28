@@ -562,7 +562,7 @@ class _EditarVooPageDesktopState extends State<EditarVooPageDesktop> {
                     if (_cia21 == 'PASSAREDO') {
                       _siglaCia21 = 'PTB';
                     }
-                    context.read<DatabaseService>().updateDadosVooIn(
+                    DatabaseService().updateDadosVooIn(
                         paxUid,
                         '',
                         '',
@@ -3187,6 +3187,7 @@ class _EditarVooPageDesktopState extends State<EditarVooPageDesktop> {
       return const Loader();
     } else {
       if (widget.tipoTrecho == 'IDA') {
+       
         Widget checarStep(int step) {
           if (step == 1) {
             return Padding(
@@ -6478,6 +6479,7 @@ class _EditarVooPageDesktopState extends State<EditarVooPageDesktop> {
           return const SizedBox.shrink();
         }
 
+      
         if (numeroEscala == "1") {
           return Scaffold(
             backgroundColor: Colors.white,
@@ -10537,7 +10539,7 @@ class _EditarVooPageDesktopState extends State<EditarVooPageDesktop> {
   Widget nextButtonIda1(String uid) {
     return TextButton(
         onPressed: () {
-          if (_formKey1.currentState?.validate() ?? false) {
+          if (_formKey1.currentState?.validate() == true) {
             _submitDetailsSemEscalaIda(uid);
           }
         },
