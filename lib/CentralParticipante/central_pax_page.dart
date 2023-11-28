@@ -637,8 +637,7 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
       //Msg para informações de transfer in
       msgWhatsAppTransferIn(String numeracaoVeiculo, String origem,
           String destino, Timestamp horarioSaida, Timestamp horarioChegada) {
-        launchWhatsApp(
-            'Olá ' +
+        launchWhatsApp('Olá ' +
 
             //nome participante
             dadoParticipante.nome +
@@ -731,8 +730,8 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
 
       //Msg para informações de voo in
       msgWhatsAppVooIn() {
-        if (dadoParticipante.cia2 != '') {
-            launchWhatsApp('Olá ' +
+        if (dadoParticipante.cia21 != '' && dadoParticipante.cia2 != '') {
+          launchWhatsApp('Olá ' +
 
               //nome participante
               dadoParticipante.nome +
@@ -757,7 +756,7 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
               // '\n\n' +
 
               //dados trecho
-              'Trecho: ' +
+              'Trecho : ' +
               dadoParticipante.origem2 +
               ' > ' +
               dadoParticipante.destino2 +
@@ -786,9 +785,8 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
               dadoParticipante.eticket2 +
               '\n\n' +
               'Loc: ' +
-              dadoParticipante.loc2);
-
-               '\n\n'
+              dadoParticipante.loc2 +
+              '\n\n'
                   'Trecho 2: ' +
               '\n\n' +
 
@@ -798,10 +796,13 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
               ' ' +
               dadoParticipante.voo21 +
               '\n\n' +
+                'Trecho : ' +
               dadoParticipante.origem21 +
               ' > ' +
               dadoParticipante.destino21 +
               '\n\n' +
+              
+            
 
               //dados saída
               'Data saída: ' +
@@ -826,11 +827,10 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
               dadoParticipante.eticket21 +
               '\n\n' +
               'Loc : ' +
-              dadoParticipante.loc21;
-     
-          
-        } else {
-            launchWhatsApp('Olá ' +
+              dadoParticipante.loc21);
+        }
+        if (dadoParticipante.cia21 != '' && dadoParticipante.cia2 == '') {
+          launchWhatsApp('Olá ' +
 
               //nome participante
               dadoParticipante.nome +
@@ -885,14 +885,12 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
               '\n\n' +
               'Loc: ' +
               dadoParticipante.loc21);
-     
-        
         }
       }
 
       //Msg para informações de voo out
       msgWhatsAppVooOut() {
-        if (dadoParticipante.cia4 != '') {
+        if (dadoParticipante.cia3 != '' && dadoParticipante.cia4 != '') {
           launchWhatsApp('Olá ' +
 
               //nome participante
@@ -957,8 +955,11 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
               dadoParticipante.cia4 +
               ' ' +
               dadoParticipante.voo4 +
-              '\n\n' +
+            
+               '\n\n' +
+                'Trecho : ' +
               dadoParticipante.origem4 +
+              
               ' > ' +
               dadoParticipante.destino4 +
               '\n\n' +
@@ -987,7 +988,8 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
               '\n\n' +
               'Loc : ' +
               dadoParticipante.loc4);
-        } else {
+        }
+        if (dadoParticipante.cia3 != '' && dadoParticipante.cia4 == '') {
           launchWhatsApp('Olá ' +
 
               //nome participante
@@ -1178,7 +1180,7 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
                           width: 8,
                         ),
                         //voo in
-                        dadoParticipante.cia2 != ''
+                        dadoParticipante.cia21 != ''
                             ? GestureDetector(
                                 onTap: () {
                                   msgWhatsAppVooIn();
