@@ -622,11 +622,11 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
       msgWhatsAppHotel() {
         if (dadoParticipante.hotel != '') {
           launchWhatsApp(
-              'Olá ${dadoParticipante.nome},\n\nSeguem informações relativas a sua acomodação:\n\nHotel: ${dadoParticipante.hotel}\n\nCheck in: ${formatDate(dadoParticipante.checkIn.toDate().toUtc(), [
+              'Olá ${dadoParticipante.nome},\n\nSeguem informações relativas a sua acomodação:\n\nHotel: ${dadoParticipante.hotel2}\n\nCheck in: ${formatDate(dadoParticipante.checkIn2.toDate().toUtc(), [
                 dd,
                 '/',
                 mm
-              ])}\n\nCheck out: ${formatDate(dadoParticipante.checkOut.toDate().toUtc(), [
+              ])}\n\nCheck out: ${formatDate(dadoParticipante.checkOut2.toDate().toUtc(), [
                 dd,
                 '/',
                 mm
@@ -638,30 +638,48 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
       msgWhatsAppTransferIn(String numeracaoVeiculo, String origem,
           String destino, Timestamp horarioSaida, Timestamp horarioChegada) {
         launchWhatsApp(
-            'Olá ${dadoParticipante.nome}, \n\nSeguem informações relativas ao seu transfer de chegada no evento: \n\nEmbarque: $origem \n\nData: ${formatDate(dadoParticipante.saida1.toDate(), [
-              dd,
-              '/',
-              mm,
-              ' - '
-            ])}\n\nDestino: $destino\n\nData saída: ${formatDate(horarioSaida.toDate().toUtc(), [
-              dd,
-              '/',
-              mm,
-              ' - '
-            ])} ${formatDate(horarioSaida.toDate().toUtc(), [
-              HH,
-              ':',
-              nn
-            ])}\n\nData chegada: ${formatDate(horarioChegada.toDate().toUtc(), [
-              dd,
-              '/',
-              mm,
-              ' - '
-            ])} ${formatDate(horarioChegada.toDate().toUtc(), [
-              HH,
-              ':',
-              nn
-            ])}\n\nVeículo: $numeracaoVeiculo');
+            'Olá ' +
+
+            //nome participante
+            dadoParticipante.nome +
+            ',' +
+            '\n\n' +
+            'Seguem informações relativas ao seu transfer de saída do evento: ' +
+            '\n\n' +
+
+            //dados embarque origem
+            'Embarque: ' +
+            origem +
+            '\n\n' +
+
+            // //dados data vôo
+            // 'Data: ' +  formatDate(
+            // dadoParticipante.saida1
+            //     .toDate(),
+            // [dd, '/', mm, ' - '])+
+            // '\n\n' +
+
+            //dados embarque destino
+            'Destino: ' +
+            destino +
+            '\n\n' +
+
+            //dados saída
+            'Data saída: ' +
+            formatDate(horarioSaida.toDate().toUtc(), [dd, '/', mm, ' - ']) +
+            " " +
+            formatDate(horarioSaida.toDate().toUtc(), [HH, ':', nn]) +
+            '\n\n' +
+
+            //dados chegada
+            'Data chegada: ' +
+            formatDate(horarioChegada.toDate().toUtc(), [dd, '/', mm, ' - ']) +
+            " " +
+            formatDate(horarioChegada.toDate().toUtc(), [HH, ':', nn]) +
+            '\n\n' +
+            //numeração veículo
+            "Veículo: " +
+            numeracaoVeiculo);
       }
 
       //Msg para informações de transfer out
@@ -713,103 +731,8 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
 
       //Msg para informações de voo in
       msgWhatsAppVooIn() {
-        if (dadoParticipante.cia1 != '') {
-          launchWhatsApp('Olá ' +
-
-              //nome participante
-              dadoParticipante.nome +
-              ',' +
-              '\n\n' +
-              'Seguem informações relativas ao seu vôo de ida: ' +
-              '\n\n' +
-              'Trecho 1: ' +
-              '\n\n'
-                  //dados cia aérea
-                  'Cia aérea: ' +
-              dadoParticipante.cia1 +
-              ' ' +
-              dadoParticipante.voo1 +
-              '\n\n' +
-
-              // //dados data vôo
-              // 'Data: ' +  formatDate(
-              // dadoParticipante.saida1
-              //     .toDate(),
-              // [dd, '/', mm, ' - '])+
-              // '\n\n' +
-
-              //dados trecho
-
-              dadoParticipante.origem1 +
-              ' > ' +
-              dadoParticipante.destino1 +
-              '\n\n' +
-
-              //dados saída
-              'Data saída: ' +
-              formatDate(dadoParticipante.saida1.toDate().toUtc(),
-                  [dd, '/', mm, ' - ']) +
-              " " +
-              formatDate(
-                  dadoParticipante.saida1.toDate().toUtc(), [HH, ':', nn]) +
-              '\n\n' +
-
-              //dados chegada
-              'Data chegada: ' +
-              formatDate(dadoParticipante.chegada1.toDate().toUtc(),
-                  [dd, '/', mm, ' - ']) +
-              " " +
-              formatDate(
-                  dadoParticipante.chegada1.toDate().toUtc(), [HH, ':', nn]) +
-
-              //dados eteicket
-              '\n\n' +
-              'E Ticket: ' +
-              dadoParticipante.eticket1 +
-              '\n\n' +
-              'Loc : ' +
-              dadoParticipante.loc1 +
-              '\n\n' +
-              'Trecho 2: ' +
-              '\n\n' +
-
-              //dados cia aérea
-              'Cia aérea: ' +
-              dadoParticipante.cia2 +
-              ' ' +
-              dadoParticipante.voo2 +
-              '\n\n' +
-              dadoParticipante.origem2 +
-              ' > ' +
-              dadoParticipante.destino2 +
-              '\n\n' +
-
-              //dados saída
-              'Data saída: ' +
-              formatDate(dadoParticipante.saida2.toDate().toUtc(),
-                  [dd, '/', mm, ' - ']) +
-              " " +
-              formatDate(
-                  dadoParticipante.saida2.toDate().toUtc(), [HH, ':', nn]) +
-              '\n\n' +
-
-              //dados chegada
-              'Data chegada: ' +
-              formatDate(dadoParticipante.chegada2.toDate().toUtc(),
-                  [dd, '/', mm, ' - ']) +
-              " " +
-              formatDate(
-                  dadoParticipante.chegada2.toDate().toUtc(), [HH, ':', nn]) +
-
-              //dados eteicket
-              '\n\n' +
-              'E Ticket: ' +
-              dadoParticipante.eticket2 +
-              '\n\n' +
-              'Loc : ' +
-              dadoParticipante.loc2);
-        } else {
-          launchWhatsApp('Olá ' +
+        if (dadoParticipante.cia2 != '') {
+            launchWhatsApp('Olá ' +
 
               //nome participante
               dadoParticipante.nome +
@@ -864,6 +787,106 @@ class _CentralPaxPageState extends State<CentralPaxPage> {
               '\n\n' +
               'Loc: ' +
               dadoParticipante.loc2);
+
+               '\n\n'
+                  'Trecho 2: ' +
+              '\n\n' +
+
+              //dados cia aérea
+              'Cia aérea: ' +
+              dadoParticipante.cia21 +
+              ' ' +
+              dadoParticipante.voo21 +
+              '\n\n' +
+              dadoParticipante.origem21 +
+              ' > ' +
+              dadoParticipante.destino21 +
+              '\n\n' +
+
+              //dados saída
+              'Data saída: ' +
+              formatDate(dadoParticipante.saida21.toDate().toUtc(),
+                  [dd, '/', mm, ' - ']) +
+              " " +
+              formatDate(
+                  dadoParticipante.saida21.toDate().toUtc(), [HH, ':', nn]) +
+              '\n\n' +
+
+              //dados chegada
+              'Data chegada: ' +
+              formatDate(dadoParticipante.chegada21.toDate().toUtc(),
+                  [dd, '/', mm, ' - ']) +
+              " " +
+              formatDate(
+                  dadoParticipante.chegada21.toDate().toUtc(), [HH, ':', nn]) +
+
+              //dados eteicket
+              '\n\n' +
+              'E Ticket2: ' +
+              dadoParticipante.eticket21 +
+              '\n\n' +
+              'Loc : ' +
+              dadoParticipante.loc21;
+     
+          
+        } else {
+            launchWhatsApp('Olá ' +
+
+              //nome participante
+              dadoParticipante.nome +
+              ',' +
+              '\n\n' +
+              'Seguem informações relativas ao seu vôo de ida: ' +
+              '\n\n' +
+
+              //dados cia aérea
+              'Cia aérea: ' +
+              dadoParticipante.cia21 +
+              ' ' +
+              dadoParticipante.voo21 +
+              '\n\n' +
+
+              //
+              // //dados data vôo
+              // 'Data: ' +  formatDate(
+              // dadoParticipante.saida2
+              //     .toDate(),
+              // [dd, '/', mm, ' - '])+
+              // '\n\n' +
+
+              //dados trecho
+              'Trecho: ' +
+              dadoParticipante.origem21 +
+              ' > ' +
+              dadoParticipante.destino21 +
+              '\n\n' +
+
+              //dados saída
+              'Data saída: ' +
+              formatDate(dadoParticipante.saida21.toDate().toUtc(),
+                  [dd, '/', mm, ' - ']) +
+              " " +
+              formatDate(
+                  dadoParticipante.saida21.toDate().toUtc(), [HH, ':', nn]) +
+              '\n\n' +
+
+              //dados chegada
+              'Data chegada: ' +
+              formatDate(dadoParticipante.chegada21.toDate().toUtc(),
+                  [dd, '/', mm, ' - ']) +
+              " " +
+              formatDate(
+                  dadoParticipante.chegada21.toDate().toUtc(), [HH, ':', nn]) +
+
+              //dados eteicket
+              '\n\n' +
+              'E Ticket: ' +
+              dadoParticipante.eticket21 +
+              '\n\n' +
+              'Loc: ' +
+              dadoParticipante.loc21);
+     
+        
         }
       }
 

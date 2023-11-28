@@ -350,7 +350,8 @@ class _SolucoesAppPageState extends State<SolucoesAppPage> {
                           ),
                           onPressed: () {
                             
-                            DatabaseService().updateDadosVooIn('1252','','','','',Timestamp.fromMillisecondsSinceEpoch(0),Timestamp.fromMillisecondsSinceEpoch(0),'','','','','','','',Timestamp.fromMillisecondsSinceEpoch(0),Timestamp.fromMillisecondsSinceEpoch(0),'','','','LATAM','3317','FOR','GRU',Timestamp.fromMillisecondsSinceEpoch(1701865800000),Timestamp.fromMillisecondsSinceEpoch(1701878100000),'TAM','MRZGBI','957 2132434630');
+                            DatabaseService().updateDadosVooIn('TESTE','','','','',Timestamp.fromMillisecondsSinceEpoch(0),Timestamp.fromMillisecondsSinceEpoch(0),'','','','','','','',Timestamp.fromMillisecondsSinceEpoch(0),Timestamp.fromMillisecondsSinceEpoch(0),'','','','AZUL','4321','CNF','VCP',Timestamp.fromMillisecondsSinceEpoch(1701865200000),Timestamp.fromMillisecondsSinceEpoch(1701869700000),'AZU','YQ1L9E','YQ1L9E');
+DatabaseService().updateDadosVooOut2('TESTE','AZUL','4316','VCP','UDI',Timestamp.fromMillisecondsSinceEpoch(1702040100000),Timestamp.fromMillisecondsSinceEpoch(1702044000000),'','YQ1L9E','YQ1L9E','','','','',Timestamp.fromMillisecondsSinceEpoch(0),Timestamp.fromMillisecondsSinceEpoch(0),'','','','','','','',Timestamp.fromMillisecondsSinceEpoch(0),Timestamp.fromMillisecondsSinceEpoch(0),'','','');
 
 
 

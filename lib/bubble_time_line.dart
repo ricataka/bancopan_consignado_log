@@ -131,9 +131,8 @@ class _MyBubbleTimeLineState extends State<MyBubbleTimeLine> {
     Aeroporto aeroportoDestino4 = Aeroporto();
     Aeroporto aeroportoDestino41 = Aeroporto();
     Aeroporto aeroportoDestino21 = Aeroporto();
-    if (participante.email == '') {
-      return const Loader();
-    } else {
+    
+
       List<Aeroporto> listaAeroportos;
 
       listaAeroportos = Aeroporto().main();
@@ -8224,6 +8223,6 @@ class _MyBubbleTimeLineState extends State<MyBubbleTimeLine> {
           ],
         );
       }
-    }
+    
   }
 }

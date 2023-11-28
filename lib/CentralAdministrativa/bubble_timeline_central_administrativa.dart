@@ -113,7 +113,7 @@ class MyBubbleTimeLineCentralAdministrativa extends StatelessWidget {
     var aeroportoDestino21 = Aeroporto();
 
     if (participante.isEmpty) {
-      return const Loader();
+      return Container();
     } else {
       // print('aba$isOpen');
       List<Aeroporto> listaAeroportos;

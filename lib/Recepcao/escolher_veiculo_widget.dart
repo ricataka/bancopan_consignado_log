@@ -59,27 +59,7 @@ class _ListaVeiculosRecepcaoWidgetState
       if (listpax.isEmpty) {
         return const Loader();
       } else {
-        Icon getColor(String color) {
-          if (color == "BRISTOL INTERNATIONAL GUARULHOS") {
-            return const Icon(Icons.brightness_1_rounded,
-                size: 23, color: Color(0xFFDAA520));
-          }
-          if (color == "BOURBON ATIBAIA") {
-            return const Icon(Icons.brightness_1_rounded,
-                size: 23, color: Colors.green);
-          }
-
-          if (color == "RAMADA VIRACOPOS") {
-            return const Icon(Icons.brightness_1_rounded,
-                size: 23, color: Colors.red);
-          }
-          if (color == "") {
-            return const Icon(Icons.brightness_1_rounded,
-                size: 23, color: Colors.white);
-          }
-          return const Icon(Icons.brightness_1_rounded,
-              size: 23, color: Colors.white);
-        }
+       
 
         List<Participantes> listParticipantesTotalIn = listpax
             .where((o) =>
@@ -226,7 +206,7 @@ class _ListaVeiculosRecepcaoWidgetState
                       const SizedBox(
                         width: 8,
                       ),
-                      getColor(widget.transferInCard.destino ?? ''),
+                     
                       Expanded(
                         flex: 8,
                         child: Padding(
@@ -368,27 +348,7 @@ class _ListaVeiculosRecepcaoWidgetState
       if (listpax.isEmpty) {
         return const Loader();
       } else {
-        Icon getColor(String color) {
-          if (color == "BRISTOL INTERNATIONAL GUARULHOS") {
-            return const Icon(Icons.brightness_1_rounded,
-                size: 23, color: Color(0xFFDAA520));
-          }
-          if (color == "BOURBON ATIBAIA") {
-            return const Icon(Icons.brightness_1_rounded,
-                size: 23, color: Colors.green);
-          }
-
-          if (color == "RAMADA VIRACOPOS") {
-            return const Icon(Icons.brightness_1_rounded,
-                size: 23, color: Colors.red);
-          }
-          if (color == "") {
-            return const Icon(Icons.brightness_1_rounded,
-                size: 23, color: Colors.white);
-          }
-          return const Icon(Icons.brightness_1_rounded,
-              size: 23, color: Colors.white);
-        }
+       
 
         List<Participantes> listParticipantesTotalIn = listpax
             .where((o) =>
@@ -529,7 +489,7 @@ class _ListaVeiculosRecepcaoWidgetState
                     const SizedBox(
                       width: 8,
                     ),
-                    getColor(widget.transferInCard.destino ?? ''),
+                   
                     Expanded(
                       flex: 8,
                       child: Padding(

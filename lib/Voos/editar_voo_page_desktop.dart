@@ -2579,7 +2579,7 @@ class _EditarVooPageDesktopState extends State<EditarVooPageDesktop> {
                     if (_cia3 == 'PASSAREDO') {
                       _siglaCia3 = 'PTB';
                     }
-                    context.read<DatabaseService>().updateDadosVooOut(
+                    DatabaseService().updateDadosVooOut(
                         paxUid,
                         _cia3,
                         _numeroVoo3,

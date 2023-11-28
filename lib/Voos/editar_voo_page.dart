@@ -6981,7 +6981,7 @@ class _EditarVooPageState extends State<EditarVooPage> {
                                 DateTimeField(
                                   format: format,
                                   initialValue:
-                                      _previsaoSaida3.toDate(),
+                                      _previsaoSaida3.toDate().toUtc(),
                                   validator: (val) => val == DateTime(0)
                                       ? 'Favor escolher uma data'
                                       : null,
@@ -7142,7 +7142,7 @@ class _EditarVooPageState extends State<EditarVooPage> {
                                 DateTimeField(
                                   format: format,
                                   initialValue:
-                                      _previsaoChegada3.toDate(),
+                                      _previsaoChegada3.toDate().toUtc(),
                                   validator: (val) => val == DateTime(0)
                                       ? 'Favor escolher uma data'
                                       : null,
