@@ -239,7 +239,7 @@ class _AdicionarVooPageDesktopState extends State<AdicionarVooPageDesktop> {
     "UNITED",
     "AEROMEXICO",
     "SWISS"
-        "EMIRATES"
+    "EMIRATES"
   ];
   var listaAeroporto = <Aeroporto>[];
 
